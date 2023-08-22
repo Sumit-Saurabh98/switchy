@@ -2,19 +2,11 @@
     display: flex;
     flex-wrap: wrap;
     column-gap: 20px;
-    margin-top: 40px;
+    padding-top: 40px;
 }
 
-.mainDiv{
-    margin-top: 40px;
-    /* display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center; */
-} 
 
 .EnergyDistributionGraph{
-    margin-top: 40px;
         display: flex;
         flex-wrap: wrap;
         flex-direction: column;
@@ -24,4 +16,14 @@
 
 .dateClass{
     margin: 20px 0;
+}
+
+.dark{
+    background-color: #272727;
+    color: white;
+}
+
+.light {
+    background-color: #fff;
+    color: black;
 }

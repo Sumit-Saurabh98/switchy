@@ -95,7 +95,7 @@ function EnergyDistributionGraph() {
   }
 
   return (
-    <div style={{border:"2px solid green"}} className="EnergyDistributionGraph">
+    <div className="EnergyDistributionGraph">
       <div className='mainDiv'>
         <Select
           value={selectedSources[0]} 
@@ -108,9 +108,10 @@ function EnergyDistributionGraph() {
         </Select>
       </div>
       <div className='dateClass'>
-        <label>Select Date:</label>
+        <label>Select Date: </label>
         <input
           type="date"
+          style={{color:"black"}}
           value={selectedDate}
           onChange={e => setSelectedDate(e.target.value)}
         />

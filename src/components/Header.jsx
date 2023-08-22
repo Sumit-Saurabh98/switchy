@@ -1,27 +1,30 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { Avatar, Box, Button, Container, IconButton, MenuItem, Tooltip } from '@mui/material';
+import { Avatar, Box, Container, IconButton, MenuItem, Tooltip } from '@mui/material';
 import AdbIcon from '@mui/icons-material/Adb';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
+import { ToggleTheme } from '../context/ToggleTheme';
 
 
 
 
-const pages = ['Products', 'Pricing', 'Blog'];
+// const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const theme = createTheme({
     palette: {
-        mode: 'light', 
+        mode: 'dark', // You can set 'dark' or 'light' here
     },
 });
 
 function Header() {
-
+  const {myTheme, changeTheme} = useContext(ToggleTheme)
 const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -61,7 +64,7 @@ const [anchorElNav, setAnchorElNav] = React.useState(null);
               textDecoration: 'none',
             }}
           >
-            LOGO
+            SWITCHY
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -93,11 +96,6 @@ const [anchorElNav, setAnchorElNav] = React.useState(null);
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -117,24 +115,17 @@ const [anchorElNav, setAnchorElNav] = React.useState(null);
               textDecoration: 'none',
             }}
           >
-            LOGO
+            SWITCHY
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
+            
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
+              <FormControlLabel  onChange={()=>changeTheme()} style={{marginRight:"40px"}} control={<Switch defaultChecked />} label={!myTheme?"Light Mode":"Dark Mode"} />
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt='Dan'  src="https://bit.ly/dan-abramov" />
               </IconButton>
             </Tooltip>
             <Menu
