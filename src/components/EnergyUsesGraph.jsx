@@ -25,15 +25,12 @@ ChartJS.register(
 );
 
 
-
-
 function EnergyUsesGraph(props) {
     const [loading, setLoading] = useState(false)
     const [data, setData] = useState([]);
-  const [view, setView] = useState('day'); // 'day', 'week', 'month'
+  const [view, setView] = useState('day'); 
 
   useEffect(() => {
-    // Fetch data from the API endpoint
     setLoading(true)
     axios.get('https://switcyapi.onrender.com/data')
       .then(response => {
@@ -49,7 +46,6 @@ function EnergyUsesGraph(props) {
     setView(newView);
   };
 
-// Filter data based on the selected view
   let filteredData = [];
   if (view === 'day') {
     filteredData = data;
@@ -71,7 +67,7 @@ function EnergyUsesGraph(props) {
 
     filteredData = Object.values(groupedData);
   }
-// Extract energy and time values from the filtered data
+
  const energyData = filteredData.map(item => item.energy);
   const timeLabels = filteredData.map(item => {
     const date = new Date(item.time * 1000);
@@ -85,7 +81,7 @@ function EnergyUsesGraph(props) {
     return date.toLocale;
   });
 
-  // Chart.js configuration
+ 
   const chartData = {
     labels: timeLabels,
     datasets: [
@@ -103,8 +99,8 @@ function EnergyUsesGraph(props) {
         }),
         borderColor: 'rgba(75, 192, 192, 1)',
         borderWidth: 1,
-        barPercentage: 10, // Adjust the width of the bars (0.7 means 70% of the available space)
-        categoryPercentage: 0.1, // Adjust the gap between bars (1.0 means no gap)
+        barPercentage: 10, 
+        categoryPercentage: 0.1, 
       },
     ],
   };
