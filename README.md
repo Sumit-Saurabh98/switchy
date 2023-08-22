@@ -1,6 +1,8 @@
 # Switchy
 
-Deployed Link:- https://switchy-me.netlify.app/
+Deployed Link:- https://switchy-me.netlify.app/ <br/>
+Demo Video:- https://drive.google.com/file/d/1XnvTk7gMVTeqvsQkUub9lqeppIM4_Ktw/view?usp=sharing
+
 
 ## Energy Distribution Graph (EnergyDistributionGraph.jsx)
 
