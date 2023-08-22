@@ -27,6 +27,7 @@ ChartJS.register(
 
 
 
+
 function EnergyUsesGraph(props) {
     const [loading, setLoading] = useState(false)
     const [data, setData] = useState([]);
