@@ -11,6 +11,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import { Progress, Select } from '@chakra-ui/react';
 
 
 
@@ -25,15 +26,18 @@ ChartJS.register(
 );
 
 function EnergyDistributionGraph() {
+    const [loading, setLoading] = useState(false)
   const [data, setData] = useState([]);
   const [selectedSources, setSelectedSources] = useState(['load']); // Initial selected sources
   const [selectedDate, setSelectedDate] = useState('');
 
   useEffect(() => {
     // Fetch data from the API endpoint
-    axios.get('http://localhost:8080/data2')
+    setLoading(true)
+    axios.get('https://switcyapi.onrender.com/data2')
       .then(response => {
         setData(response.data);
+        setLoading(false)
       })
       .catch(error => {
         console.error('Error fetching data:', error);
@@ -92,19 +96,18 @@ function EnergyDistributionGraph() {
 
   return (
     <div style={{border:"2px solid green"}} className="EnergyDistributionGraph">
-      <div>
-        <label>Select Sources:</label>
-        <select
-          multiple
-          value={selectedSources}
-          onChange={e => setSelectedSources(Array.from(e.target.selectedOptions, option => option.value))}
+      <div className='mainDiv'>
+        <Select
+          value={selectedSources[0]} // Since we're not using multiple selection, only one value is needed
+          onChange={e => setSelectedSources([e.target.value])} // Wrap the selected value in an array
         >
+            <option value="load">Select Source</option>
           <option value="load">Load</option>
           <option value="solar">Solar</option>
           <option value="grid">Grid</option>
-        </select>
+        </Select>
       </div>
-      <div>
+      <div className='dateClass'>
         <label>Select Date:</label>
         <input
           type="date"
@@ -113,7 +116,10 @@ function EnergyDistributionGraph() {
         />
       </div>
       <div style={{ width: '90vw', margin: '0 auto' }}>
-        <Line data={chartData} options={chartOptions} />
+        {
+            !loading ? <Line data={chartData} options={chartOptions} />:<Progress size='xs' isIndeterminate />
+        }
+        
       </div>
     </div>
   );

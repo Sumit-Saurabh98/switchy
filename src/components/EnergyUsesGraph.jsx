@@ -10,7 +10,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { Button } from '@chakra-ui/react';
+import { Button, Progress } from '@chakra-ui/react';
 
 
 
@@ -28,14 +28,17 @@ ChartJS.register(
 
 
 function EnergyUsesGraph(props) {
+    const [loading, setLoading] = useState(false)
     const [data, setData] = useState([]);
   const [view, setView] = useState('day'); // 'day', 'week', 'month'
 
   useEffect(() => {
     // Fetch data from the API endpoint
-    axios.get('http://localhost:8080/data')
+    setLoading(true)
+    axios.get('https://switcyapi.onrender.com/data')
       .then(response => {
         setData(response.data);
+        setLoading(false)
       })
       .catch(error => {
         console.error('Error fetching data:', error);
@@ -128,7 +131,10 @@ function EnergyUsesGraph(props) {
         <Button colorScheme='orange' onClick={() => toggleView('week')}>Week</Button>
         <Button colorScheme='orange' onClick={() => toggleView('month')}>Month</Button>
         </div>
-        <Bar data={chartData} options={chartOptions} />
+        {
+            !loading ? <Bar data={chartData} options={chartOptions} />:<Progress size='xs' isIndeterminate />
+        }
+        
       </div>
         </div>
     );
