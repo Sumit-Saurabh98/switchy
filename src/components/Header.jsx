@@ -16,7 +16,7 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const theme = createTheme({
     palette: {
-        mode: 'light', // You can set 'dark' or 'light' here
+        mode: 'light', 
     },
 });
 
