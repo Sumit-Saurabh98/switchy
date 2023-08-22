@@ -28,11 +28,11 @@ ChartJS.register(
 function EnergyDistributionGraph() {
     const [loading, setLoading] = useState(false)
   const [data, setData] = useState([]);
-  const [selectedSources, setSelectedSources] = useState(['load']); // Initial selected sources
+  const [selectedSources, setSelectedSources] = useState(['load']); 
   const [selectedDate, setSelectedDate] = useState('');
 
   useEffect(() => {
-    // Fetch data from the API endpoint
+    
     setLoading(true)
     axios.get('https://switcyapi.onrender.com/data2')
       .then(response => {
@@ -44,18 +44,18 @@ function EnergyDistributionGraph() {
       });
   }, []);
 
-  // Extract labels and datasets based on selected sources
+  
   const labels = data.map(item => new Date(item.time * 1000).toLocaleTimeString());
   const datasets = selectedSources.map(source => ({
     label: source,
     data: data.map(item => item[source]),
-    borderColor: getRandomColor(), // Generating random color for each source
+    borderColor: getRandomColor(), 
     borderWidth: 2,
     pointRadius: 4,
     fill: false,
   }));
 
-  // Chart.js configuration
+  
   const chartData = {
     labels: labels,
     datasets: datasets,
@@ -84,7 +84,7 @@ function EnergyDistributionGraph() {
   },
 };
 
-  // Helper function to generate random colors
+  
   function getRandomColor() {
     const letters = '0123456789ABCDEF';
     let color = '#';
@@ -98,8 +98,8 @@ function EnergyDistributionGraph() {
     <div style={{border:"2px solid green"}} className="EnergyDistributionGraph">
       <div className='mainDiv'>
         <Select
-          value={selectedSources[0]} // Since we're not using multiple selection, only one value is needed
-          onChange={e => setSelectedSources([e.target.value])} // Wrap the selected value in an array
+          value={selectedSources[0]} 
+          onChange={e => setSelectedSources([e.target.value])} 
         >
             <option value="load">Select Source</option>
           <option value="load">Load</option>
