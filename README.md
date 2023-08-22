@@ -1,5 +1,7 @@
 # Switchy
 
+Deployed Link:- https://switchy-me.netlify.app/
+
 ## Energy Distribution Graph (EnergyDistributionGraph.jsx)
 
 The EnergyDistributionGraph component is a React component that displays energy distribution data using a line chart. It fetches data from an external API and allows users to select specific energy sources and a date for visualization. The chart is implemented using the react-chartjs-2 library along with various Chart.js components.
