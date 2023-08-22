@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# Switchy
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Energy Distribution Graph (EnergyDistributionGraph.jsx)
 
-## Available Scripts
+The EnergyDistributionGraph component is a React component that displays energy distribution data using a line chart. It fetches data from an external API and allows users to select specific energy sources and a date for visualization. The chart is implemented using the react-chartjs-2 library along with various Chart.js components.
 
-In the project directory, you can run:
+### Features
 
-### `npm start`
+⚫ Fetches energy distribution data from an API. <br/>
+⚫Allows users to select energy sources (Load, Solar, Grid).<br/>
+⚫Allows users to select a specific date.<br/>
+⚫Displays a responsive line chart representing the energy distribution over time.<br/>
+⚫Randomly generates colors for each selected energy source.<br/>
+⚫Provides loading indicators while fetching data.<br/>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Energy Uses Graph (EnergyUsesGraph.jsx)
+The EnergyUsesGraph component is a React component that displays energy consumption data using a bar chart. It also fetches data from an external API and provides options to toggle between different time intervals (Day, Week, Month) for visualization. The chart is implemented using the react-chartjs-2 library along with various Chart.js components.
 
-### `npm test`
+### Features
+⚫Fetches energy consumption data from an API.<br/>
+⚫Allows users to toggle between different time intervals (Day, Week, Month).<br/>
+⚫Displays a responsive bar chart representing energy consumption over time.<br/>
+⚫Colors bars based on energy consumption levels.<br/>
+⚫Provides loading indicators while fetching data.<br/>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Header Component (Header.jsx)
+The Header component is a reusable React component that represents the application's header bar. It includes the application logo, navigation menu, user profile avatar, and a theme toggle switch. The header is implemented using the @mui/material library (previously known as Material-UI).
 
-### `npm run build`
+Features
+Displays the application logo and name.
+Provides a navigation menu for smaller screens.
+Displays user profile avatar and settings menu.
+Includes a theme toggle switch for switching between Light and Dark modes.
+Theme Toggle Context (ToggleTheme.jsx)
+The ToggleTheme context and ToggleThemeProvider components are used to manage the application's theme. The context provides the current theme state and a function to toggle between themes. It allows components to access and control the application's theme.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Features
+⚫Provides the current theme state (Light/Dark mode).<br/>
+⚫Provides a function to toggle between themes.
